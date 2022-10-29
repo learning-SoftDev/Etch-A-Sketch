@@ -10,4 +10,4 @@ Things I learned:
 -Setting variables in css
 -Manipulating the css properties using js
 
-Live: https://learning-softdev.github.io/rock-paper-scissors/
+Live: https://learning-softdev.github.io/Etch-A-Sketch/
