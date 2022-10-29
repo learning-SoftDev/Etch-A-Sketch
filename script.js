@@ -18,21 +18,45 @@ gridSlider.onmousemove = defSliderMove;
 gridSlider.onclick = defSliderMove;
 
 //Eraser logic
-let buttonEraser = document.getElementById('buttonEraser')
-let buttonEraserDown = false
-buttonEraser.onclick = function(){
+let buttonEraser = document.getElementById('buttonEraser');
+let buttonEraserDown = false;
+buttonEraser.onclick = defEraser;
+
+//Rainbow Logic
+let buttonRainbow = document.getElementById('buttonRainbow');
+let buttonRainbowDown = false
+buttonRainbow.onclick = defRainbow
+
+//Clear
+let buttonClear = document.getElementById('buttonClear');
+buttonClear.onclick = defGridReset;
+
+
+//Eraser
+function defEraser(){
     buttonEraserDown = !buttonEraserDown;
-    buttonEraserDown.style.backgroundColor = 'black'
-}
+    if(buttonEraserDown){
+        buttonEraser.style.backgroundColor = 'black'
+    } else {
+        buttonEraser.style.backgroundColor = null
+    }
+};
 
-
-
+//Rainbow
+function defRainbow(){
+    buttonRainbowDown = !buttonRainbowDown;
+    if(buttonRainbowDown){
+        buttonRainbow.style.backgroundColor = 'black'
+    } else {
+        buttonRainbow.style.backgroundColor = null
+    }
+};
 
 
 //Functions
 
 //On change, delete current grid, set the new size, then recreate the grid
-function defGridSliderChange(){
+function defGridReset(){
     defGridItemDelete();
     currentSize = gridSlider.value;
     defGridItemCreate();
@@ -47,6 +71,11 @@ function defMouseDown(e) {
     } else {
         if(buttonEraserDown){
             e.target.style.backgroundColor = null; 
+        } else if (buttonRainbowDown){
+            const rainbowR = Math.floor(Math.random() * 256);
+            const rainbowG = Math.floor(Math.random() * 256);
+            const rainbowB = Math.floor(Math.random() * 256);
+            e.target.style.backgroundColor = `rgb(${rainbowR},${rainbowG},${rainbowB})`
         } else{
             e.target.style.backgroundColor = colorPicker.value;
         }
@@ -77,10 +106,8 @@ function defGridItemDelete(){
 function defSliderMove(e){
     if (e.type === 'mousemove' && !mouseDown) {
     } else {
-        defGridSliderChange();
+        defGridReset();
         gridSize.innerHTML = 'Grid Size: ' + currentSize + ' x ' + currentSize;
     }
 };
-
-
 

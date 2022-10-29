@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container"></div>
-    <div id="gridSize">Grid Size: 16 x 16</div>
-    <input id="gridSlider" type="range" value="16" min="1" max="64">
-    <input id="colorPicker" type="color" value="#333333">
-    <button id="buttonEraser"> Eraser </button>
+    <main>
+        <div class="settingsContainer">    
+            <div id="gridSize">Grid Size: 16 x 16</div>
+            <input id="gridSlider" type="range" value="16" min="1" max="64">
+            <input id="colorPicker" type="color" value="#333333"  class="controls">
+            <button id="buttonEraser" class="controls"> Eraser </button>
+            <button id="buttonClear" class="controls"> Clear </button>
+            <button id="buttonRainbow" class="controls"> Rainbow Mode </button>
+        </div>
+        <div class="container"></div>
+        
+    </main>
+
+
+
+
     <script src="script.js"></script>
 </body>
 </html>

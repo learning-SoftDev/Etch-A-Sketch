@@ -2,10 +2,22 @@
     border:1px solid rgba(0, 0, 0, 0.1);
 }
 
-
 .container {
     display: grid;
     width: 500px;
     height: 500px
 }
 
+main{
+    display: flex;
+    justify-content: center;
+    gap:50px
+}
+
+
+
+.settingsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+}
