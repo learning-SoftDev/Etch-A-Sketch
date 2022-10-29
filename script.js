@@ -1,14 +1,27 @@
 //Setting up initial page
-let slicer = document.getElementById("slicer");
-let currentSize = slicer.value
+let gridSlider = document.getElementById("gridSlider");
+let currentSize = gridSlider.value;
 let container = document.querySelector('.container');
-container.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`
-container.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`
-
+container.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`;
+container.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`;
 gridItemCreate();
 
 //Events
-slicer.onchange = slicerOnChange
+gridSlider.onchange = gridSliderOnChange
+
+
+let gridSize = document.getElementById('gridSize');
+
+gridSlider.addEventListener('mouseover', defMouseDownSlider);
+gridSlider.addEventListener('mousedown', defMouseDownSlider);
+
+
+function defMouseDownSlider(e){
+    if (e.type === 'mouseover' && !mouseDown){
+    } else {
+        gridSize.innerHTML = 'Grid Size: ' + currentSize
+    };
+}
 
 //Setting up fill logic
 let mouseDown = false
@@ -16,7 +29,7 @@ document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 //
-let gridSize = document.getElementById('grid-size');
+
 
 
 
@@ -40,13 +53,12 @@ function gridItemCreate(){
 }; 
 
 //On change, delete current grid, set the new size, then recreate the grid
-function slicerOnChange(){
+function gridSliderOnChange(){
     gridItemDelete();
-    currentSize = slicer.value;
+    currentSize = gridSlider.value;
     gridItemCreate();
     container.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`
     container.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`
-    
 };
   
 //Delete current grid
@@ -62,7 +74,6 @@ function defMouseDown(e) {
     if (e.type === 'mouseover' && !mouseDown){
     } else {
         e.target.style.backgroundColor = 'red';
-        gridSize.innerHTML = 'Grid Size: ' + 'hakdog'
     };
 };
 
