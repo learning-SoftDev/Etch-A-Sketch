@@ -50,23 +50,6 @@ colorPicker.onclick = function(){
     defModeActivate()
 } 
 
-//Logic for setting the clicked design of the modes
-let buttonArray = [buttonEraser,buttonRainbow,buttonColor]
-function defModeActivate(){
-    for(items of buttonArray){
-        items.classList.remove('active')
-    };
-
-    if(currentMode==='eraser'){
-        buttonEraser.classList.add('active')
-    } else if (currentMode === 'rainbow') {
-        buttonRainbow.classList.add('active')
-    } else {
-        buttonColor.classList.add('active')
-    };
-
-};
-
 
 //Functions
 
@@ -126,3 +109,19 @@ function defSliderMove(e){
     }
 };
 
+//Logic for setting the clicked design of the modes
+let buttonArray = [buttonEraser,buttonRainbow,buttonColor]
+function defModeActivate(){
+    for(items of buttonArray){
+        items.classList.remove('active')
+    };
+
+    if(currentMode==='eraser'){
+        buttonEraser.classList.add('active')
+    } else if (currentMode === 'rainbow') {
+        buttonRainbow.classList.add('active')
+    } else {
+        buttonColor.classList.add('active')
+    };
+
+};
