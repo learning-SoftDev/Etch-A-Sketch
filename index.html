@@ -8,17 +8,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>ETCH-A-SKETCH</h1>
+    </header>
     <main>
         <div class="settingsContainer">    
-            <div id="gridSize">Grid Size: 16 x 16</div>
-            <input id="gridSlider" type="range" value="16" min="1" max="64">
-            <input id="colorPicker" type="color" value="#333333"  class="controls">
-            <button id="buttonEraser" class="controls"> Eraser </button>
+            <div id="settingsText">Settings</div>
+            <div class="colorContainer">
+                Pen Color
+                <input id="colorPicker" type="color" value="#333333"  class="controls">
+            </div>
+            <div class="modesContainer">
+                <button id="buttonColor" class="controls"> Color Mode </button>
+                <button id="buttonRainbow" class="controls"> Rainbow Mode </button>
+                <button id="buttonEraser" class="controls"> Eraser </button>
+            </div>
             <button id="buttonClear" class="controls"> Clear </button>
-            <button id="buttonRainbow" class="controls"> Rainbow Mode </button>
+            <div class="sliderContainer">
+                <div id="gridSize">Grid Size: 32 x 32</div>
+                <input id="gridSlider" type="range" value="32" min="1" max="64">
+            </div>
         </div>
         <div class="container"></div>
-        
     </main>
 
 

@@ -4,6 +4,7 @@ let currentSize = gridSlider.value;
 let container = document.querySelector('.container');
 let gridSize = document.getElementById('gridSize');
 let colorPicker = document.getElementById('colorPicker');
+let currentMode = 'default'
 container.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`;
 container.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`;
 defGridItemCreate();
@@ -17,39 +18,53 @@ document.body.onmouseup = () => (mouseDown = false)
 gridSlider.onmousemove = defSliderMove;
 gridSlider.onclick = defSliderMove;
 
-//Eraser logic
-let buttonEraser = document.getElementById('buttonEraser');
-let buttonEraserDown = false;
-buttonEraser.onclick = defEraser;
-
-//Rainbow Logic
-let buttonRainbow = document.getElementById('buttonRainbow');
-let buttonRainbowDown = false
-buttonRainbow.onclick = defRainbow
-
 //Clear
 let buttonClear = document.getElementById('buttonClear');
 buttonClear.onclick = defGridReset;
 
+//ColorMode logic
+let buttonColor = document.getElementById('buttonColor');
+buttonColor.classList.add('active')
+buttonColor.onclick = function(){
+    currentMode = 'default'; 
+    defModeActivate()
+} 
 
-//Eraser
-function defEraser(){
-    buttonEraserDown = !buttonEraserDown;
-    if(buttonEraserDown){
-        buttonEraser.style.backgroundColor = 'black'
-    } else {
-        buttonEraser.style.backgroundColor = null
-    }
-};
+//Eraser logic
+let buttonEraser = document.getElementById('buttonEraser');
+buttonEraser.onclick = function(){
+    currentMode = 'eraser'; 
+    defModeActivate()
+} 
 
-//Rainbow
-function defRainbow(){
-    buttonRainbowDown = !buttonRainbowDown;
-    if(buttonRainbowDown){
-        buttonRainbow.style.backgroundColor = 'black'
+//Rainbow Logic
+let buttonRainbow = document.getElementById('buttonRainbow');
+buttonRainbow.onclick = function() {
+    currentMode = 'rainbow'; 
+    defModeActivate()
+}
+
+//Color picker logic
+colorPicker.onclick = function(){
+    currentMode = 'default'; 
+    defModeActivate()
+} 
+
+//Logic for setting the clicked design of the modes
+let buttonArray = [buttonEraser,buttonRainbow,buttonColor]
+function defModeActivate(){
+    for(items of buttonArray){
+        items.classList.remove('active')
+    };
+
+    if(currentMode==='eraser'){
+        buttonEraser.classList.add('active')
+    } else if (currentMode === 'rainbow') {
+        buttonRainbow.classList.add('active')
     } else {
-        buttonRainbow.style.backgroundColor = null
-    }
+        buttonColor.classList.add('active')
+    };
+
 };
 
 
@@ -69,12 +84,12 @@ function defGridReset(){
 function defMouseDown(e) {
     if (e.type === 'mouseover' && !mouseDown){
     } else {
-        if(buttonEraserDown){
+        if(currentMode === 'eraser'){
             e.target.style.backgroundColor = null; 
-        } else if (buttonRainbowDown){
-            const rainbowR = Math.floor(Math.random() * 256);
-            const rainbowG = Math.floor(Math.random() * 256);
-            const rainbowB = Math.floor(Math.random() * 256);
+        } else if (currentMode === 'rainbow'){
+            let rainbowR = Math.floor(Math.random() * 256);
+            let rainbowG = Math.floor(Math.random() * 256);
+            let rainbowB = Math.floor(Math.random() * 256);
             e.target.style.backgroundColor = `rgb(${rainbowR},${rainbowG},${rainbowB})`
         } else{
             e.target.style.backgroundColor = colorPicker.value;
