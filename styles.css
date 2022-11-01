@@ -1,15 +1,18 @@
 :root {
     --height: 600px;
     --padding: 30px;
+    --boxShadow: 4px 5px 5px 0px rgb(0 0 0 / 50%);
+    --bodyColor: #4c9ccb;
+    --bodyColorr: #4caecb
 }
 
 body{
-    background-color: #ededed;
+    background-color: var(--bodyColor);
     font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .gridItems {
-    border:1px solid rgba(0, 0, 0, 0.055);
+    border:1px solid rgba(0, 0, 0, 0.04);
     background-color: white;
 }
 
@@ -17,12 +20,16 @@ body{
     display: grid;
     width: var(--height);
     height: var(--height);
-    border: 2px solid black;
+    border: 3px solid black;
 }
 
 .settingsContainer {
     background-color: #d6d6d6;
     padding: 30px;
+}
+
+.container, .settingsContainer {
+    box-shadow: var(--boxShadow);
 }
 
 main{
@@ -91,6 +98,7 @@ h1{
     text-align: center;
     margin: 40px;
     font-size: 60px;
+    margin-bottom: 50px;
 }
 
 #gridSize{
@@ -121,7 +129,7 @@ footer {
     text-align: center;
     width: 100%;
     font-size: 20px;
-    background-color: #d6d6d6;
+    background-color:#d3dde387;
 }
 
 a {
